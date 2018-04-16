@@ -107,6 +107,6 @@ ENV PATH $BUNDLE_BIN:$PATH
 RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
 
-RUN apk add ansible
+RUN apk add ansible unzip git nodejs
 
 CMD [ "irb" ]
