@@ -88,7 +88,7 @@ RUN set -ex \
 		procps \
 		yaml-dev \
 		zlib-dev \
-	&& apk del .ruby-builddeps \
+		gcc g++ linux-headers musl-dev libxslt-dev libxml2-dev \
 	&& cd / \
 	&& rm -r /usr/src/ruby \
 	\
@@ -105,8 +105,8 @@ ENV BUNDLE_PATH="$GEM_HOME" \
 	BUNDLE_APP_CONFIG="$GEM_HOME"
 ENV PATH $BUNDLE_BIN:$PATH
 RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
-	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
-
+	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN" \
+	&& apk del .ruby-builddeps
 RUN apk add ansible unzip git nodejs
 
 CMD [ "irb" ]
