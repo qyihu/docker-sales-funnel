@@ -19,7 +19,7 @@ RUN pip install awscli
 # copy file
 WORKDIR /build
 RUN ln -s /usr/bin/nodejs /usr/bin/node && \
-    echo "Europe/London" > /etc/timezon
+    echo "Europe/London" > /etc/timezon && \
     dpkg-reconfigure --frontend noninteractive tzdata && \
     npm config set strict-ssl false && \
-    npm install phantomjs@2.1.1 -g && \
+    npm install phantomjs@2.1.1 -g
